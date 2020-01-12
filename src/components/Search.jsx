@@ -4,11 +4,12 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      genres: [],
+      genres: this.props.genres
     };
   }
 
   render() {
+   
     return (
       <div className="search">
         <button onClick={() => this.props.swapFavorites()}>{this.props.showFaves ? 'Show Results' : 'Show Favorites'}</button>
@@ -17,14 +18,13 @@ class Search extends React.Component {
         {/* Make the select options dynamic from genres !!! */}
         {/* How can you tell which option has been selected from here? */}
 
-        <select>
-          <option value="theway">The Way</option>
-          <option value="thisway">This Way</option>
-          <option value="thatway">That Way</option>
+        <select id="genreSelect">
+          {this.props.genres.map( item => <option key={item.id}>{item.name}</option>)}
+
         </select>
         <br /><br />
 
-        <button>Search</button>
+        <button onClick={() => this.props.setMovieList(document.getElementById('genreSelect').value) }>Search</button>
 
       </div>
     );

@@ -1,22 +1,27 @@
-import React from 'react';
+import React from "react";
+import MovieListItem from "./MovieListItem.jsx";
 
 class Movies extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      
-    };
+    this.state = {};
   }
 
+  // componentDidMount() {
+
+  // }
+
   render() {
+    console.log(this.props.movies);
     return (
       <ul className="movies">
-
+        {this.props.movies.results.map(movieEntry => {
+          return <MovieListItem movie={movieEntry} />
+        })}
 
         {/* Make this list dynamic! */}
 
-
-        <li className="movie_item">
+        {/* <li className="movie_item">
           <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
           <div className="movie_description">
             <h2>De Wae</h2>
@@ -159,8 +164,7 @@ class Movies extends React.Component {
               </div>
             </section>
           </div>
-        </li>
-
+        </li> */}
       </ul>
     );
   }
